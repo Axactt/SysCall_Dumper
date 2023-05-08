@@ -2,6 +2,18 @@
 #include<windows.h>
 #include"ReNtdll.h" //!Header indlude from x64dbg project, defines lots of undocumented structures
 
+
+extern "C" //! extern "C" namespace to prvent name-mangling
+
+{
+
+	void asmSysCaller();
+
+}
+
+
+
+
 //!Usinf custom getModuleHandle function using LDR_DATA_TABLE_ENTRY
 //! Using getTEB/getPEB from gs-register_base to get TIB and PEB for LDR_DATA_TABLE_ENTRY structure
 
@@ -151,5 +163,7 @@ int main()
 		}
 
 	}
+
+	asmSysCaller();
 	return 0;
 }
